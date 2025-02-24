@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an uncommon bug related to the specificity of CSS selectors and the cascade.  The `#myId .myClass` selector should override `.myClass` because of its higher specificity.  However, due to an unexpected behavior (possibly related to inheritance or how a certain CSS property is handled), `.myClass` is still applied instead. This example highlights a subtle interaction between id selectors, class selectors, and the cascade that could be difficult to diagnose.
+
+```css
+#myId {
+  color: blue; 
+}
+
+#myId .myClass {
+  color: red;
+}
+
+.myClass {
+  color: green;
+}
+
+#myId div.myClass {
+  color:purple;
+}
+```
+
+In this case, the element with id "myId" and class "myClass" will unexpectedly render with green text color instead of red or purple. 
